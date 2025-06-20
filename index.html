@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumblers - Infografía de Marketing Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #8f8ae1 0%, #6d76f8 50%, #e8b7f4 100%);
+            background-attachment: fixed;
+            color: #2D3748;
+        }
+        h1, h2, h3 {
+            color: #000000;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .flowchart-step {
+            border-color: #000000;
+            color: #000000;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            font-size: 3rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            line-height: 1; /* Ensure text inside is perfectly centered vertically */
+        }
+        .flowchart-arrow {
+            color: #000000;
+        }
+        .logo-container {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 128px;
+            height: 128px;
+            position: relative;
+            z-index: 2;
+        }
+        .logo-container img {
+            border-radius: 50%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .card-panel {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Aligns content to the top */
+        }
+        .text-gray-900 {
+            color: #000000;
+        }
+        .text-gray-700 {
+            color: #333333;
+        }
+        .text-gray-600 {
+            color: #444444;
+        }
+        .marquez-photos-container-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            align-items: center;
+            justify-items: center;
+            height: 200px;
+            overflow: hidden;
+        }
+        .marquez-photos-container-grid img {
+            width: 90%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .process-flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .process-step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4px;
+            flex: 1;
+            min-width: 120px;
+            margin: 0.5rem 0;
+        }
+        @media (min-width: 768px) {
+            .process-flow-container {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-around;
+            }
+            .process-step-item {
+                margin: 0;
+                align-self: flex-start;
+            }
+            .flowchart-arrow {
+                margin-top: 0;
+            }
+        }
+        .card-panel.pagina-web-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .card-panel.pagina-web-card p {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .card-panel.pagina-web-card a {
+            margin-top: 0.5rem;
+        }
+        .card-panel.pagina-web-card .flex-wrap {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex items-center">
+            <div class="flex items-center mr-auto">
+                <img src="https://www.dropbox.com/scl/fi/01y2k7hvsjol5fv8da24a/Logo.png?rlkey=mien45nqzec5i6yo60fkbczst&raw=1" alt="Jumblers Logo Pequeño" class="w-10 h-10 rounded-full mr-4">
+                <h1 class="text-3xl font-black text-[#3441de]" style="font-family: 'Gagalin', sans-serif; line-height: 1;">JUMBLERS</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#quienes-somos" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Quiénes Somos</a>
+                <a href="#servicios" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Servicios</a>
+                <a href="#caso-exito" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Caso de éxito</a>
+                <a href="#proceso" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Proceso</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="quienes-somos" class="text-center mb-16">
+            <div class="mx-auto mb-6 logo-container">
+                 <img src="https://www.dropbox.com/scl/fi/01y2k7hvsjol5fv8da24a/Logo.png?rlkey=mien45nqzec5i6yo60fkbczst&raw=1" alt="Logo de Jumblers: Personaje con gorro y computador" onerror="this.onerror=null;this.src='https://placehold.co/128x128/cccccc/333333?text=Error+Logo';">
+            </div>
+
+            <h2 class="text-4xl font-extrabold text-[#000000] mb-4">En un mar de ideas todo se vale</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
+                Creemos firmemente que detrás de cada marca existe un universo de posibilidades esperando ser descubierto y compartido.
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
+                Nuestra historia nace de una idea simple pero poderosa: la unión de dos mentes apasionadas por el marketing digital, Julián Barajas y Mauricio Robles, quienes, tras años de formación y experiencia en el campo, decidieron combinar sus conocimientos para un propósito común.
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
+                Fundamos Jumblers con una misión clara: transformar el potencial de las marcas en resultados tangibles.
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
+                Nuestro nombre, Jumblers, refleja nuestra filosofía: nos encanta "mezclar" creativamente ideas, estrategias y tecnologías digitales para "desordenar" lo convencional y construir soluciones únicas que impulsen el reconocimiento, disparen las ventas y multipliquen las interacciones de sus marcas en el ecosistema digital.
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
+                En Jumblers, no solo implementamos estrategias; las creamos desde cero, con un enfoque integral y una energía contagiosa. Nos apasiona ayudar a pequeñas y medianas empresas a navegar el complejo mundo digital, convirtiendo desafíos en oportunidades y visiones en éxitos medibles.
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
+                ¡Bienvenidos a la era donde la creatividad y la estrategia se unen para hacer magia digital!
+            </p>
+
+            <div class="card-panel mt-16">
+                <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">✨ Generador de Ideas de Contenido ✨</h3>
+                <p class="text-center text-gray-700 mb-6">Demuestra la creatividad de Jumblers. Ingresa un tema o industria para obtener ideas frescas de contenido para redes sociales o blogs.</p>
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6">
+                    <input type="text" id="contentTopicInput" placeholder="Ej: Moda masculina, Cafetería, Tecnología"
+                           class="flex-grow p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:border-[#6d76f8] text-gray-800">
+                    <button id="generateContentIdeas"
+                            class="bg-[#6d76f8] hover:bg-[#3441de] text-white font-bold py-3 px-6 rounded-md transition duration-300 shadow-lg">
+                        Generar Ideas
+                    </button>
+                </div>
+                <div id="contentIdeasOutput" class="bg-gray-100 p-4 rounded-md text-gray-800 text-left min-h-[100px] flex items-center justify-center">
+                    <p class="text-gray-500">Las ideas generadas aparecerán aquí...</p>
+                </div>
+                <div id="loadingIndicator" class="hidden text-center mt-4 text-[#3441de] font-semibold">
+                    Generando ideas...
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#000000] mb-8">Servicios y Precios</h2>
+            <div class="card-panel">
+                 <p class="text-center text-gray-700 mb-6">Ofrecemos una gama completa de servicios de marketing digital, con precios estimados según la complejidad y el alcance de cada proyecto.</p>
+                <div class="chart-container">
+                    <canvas id="serviciosChart"></canvas>
+                </div>
+                <p class="text-sm text-center text-gray-600 mt-4">Los precios son rangos mensuales y no incluyen la inversión en pauta publicitaria. Los servicios de video y fotografía se cotizan por proyecto.</p>
+            </div>
+        </section>
+
+        <section id="caso-exito" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#000000] mb-2">Caso de éxito: Marquez</h2>
+             <p class="text-center text-lg text-gray-700 mb-8">Elevando la elegancia masculina con una estrategia digital a medida.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="card-panel">
+                    <h3 class="text-2xl font-bold text-[#000000] mb-4">El desafío y nuestra solución web</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Márquez es una boutique de ropa masculina que buscaba construir una presencia digital sólida desde cero.
+                        <br><br>
+                        No contaba con una página web, lo que limitaba su capacidad para mostrar productos, vender en línea y ofrecer métodos de pago digitales.
+                        Desde nuestra agencia, desarrollamos una solución integral: una plataforma web funcional, atractiva y orientada a la conversión.
+                        <br><br>
+                        También mejoramos su presencia en redes sociales, optimizando el contenido y aplicando estrategias orgánicas para aumentar la interacción y el alcance sin una gran inversión en pauta.
+                    </p>
+                </div>
+                <div class="card-panel pagina-web-card">
+                    <h3 class="text-2xl font-bold text-center text-[#000000]">Página Web</h3>
+                    <p class="text-gray-700 leading-relaxed mb-2">
+                        Ropa para hombre con la mejor calidad/precio para cada situación y evento. | Marquez Gentleman And Suit
+                    </p>
+                    <a href="https://www.marquezgentlemansuit.com/" target="_blank" class="text-[#6d76f8] hover:underline text-sm block">Visitar web</a>
+                    <div class="flex flex-wrap justify-center items-center gap-1 mt-2">
+                        <img src="https://www.dropbox.com/scl/fi/qlfa9pw38ran3iwjznqtx/Marquezweb.png?rlkey=xyx47icg2nzoshejyywtks6en&raw=1" alt="[Image of Marquez Gentleman's Suit Website]" class="w-full h-auto rounded-md shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/300x200/cccccc/333333?text=Error+Web+Image';">
+                    </div>
+                </div>
+                 <div class="card-panel">
+                     <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Aumento de Interacciones</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="interaccionesChart"></canvas>
+                    </div>
+                     <p class="text-center text-gray-700 mt-4">Rediseñamos la estrategia de contenido, logrando un notable incremento en el engagement.</p>
+                </div>
+                <div class="card-panel">
+                    <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Marquez Fotos</h3>
+                    <div class="marquez-photos-container-grid">
+                        <img src="https://www.dropbox.com/scl/fi/ombpr0plg9swm6kk89fn8/IMG_6013.jpg?rlkey=js15ytqdbfnuutkzpuibs865q&raw=1" alt="[Image of Marquez Client 1]" onerror="this.onerror=null;this.src='https://placehold.co/150x100/cccccc/333333?text=Error+Foto+1';">
+                        <img src="https://www.dropbox.com/scl/fi/4jtlo77cnfn34l4x32uug/IMG_6011.jpg?rlkey=65a1avirals5xp0p6l4xzewfb&raw=1" alt="[Image of Marquez Client 2]" onerror="this.onerror=null;this.src='https://placehold.co/150x100/cccccc/333333?text=Error+Foto+2';">
+                    </div>
+                </div>
+                <div class="card-panel md:col-span-2 lg:col-span-2">
+                     <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Crecimiento orgánico de seguidores</h3>
+                    <p class="text-gray-700 mb-4">Nuestra gestión estratégica en Instagram y Facebook, combinada con un SEO efectivo en su nueva web, generó un crecimiento sostenido y cualificado de su comunidad. Es importante mencionar que la cuenta de Instagram de Márquez había sido penalizada previamente por el uso de bots, lo cual hizo más lento el proceso inicial de obtención de seguidores. Sin embargo, logramos construir una comunidad sólida de forma orgánica y conseguir que la cuenta sea recomendada por el algoritmo de Instagram.</p>
+                    <a href="https://www.instagram.com/marquez.gentlemansuit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-[#6d76f8] hover:underline text-sm mt-4 block">Visitar Instagram</a>
+                    <div class="chart-container mt-6">
+                        <canvas id="seguidoresChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#000000] mb-8">Nuestro proceso de trabajo</h2>
+            <div class="card-panel">
+                <div class="flex flex-col md:flex-row justify-around items-start text-center">
+                    <div class="process-step-item">
+                        <div class="flowchart-step border-2 rounded-full text-xl">1</div>
+                        <h3 class="font-bold text-lg text-[#000000]">Conocimiento y Estrategia</h3>
+                        <p class="text-sm text-gray-700">Nos sumergimos en tu marca y diseñamos una hoja de ruta a medida.</p>
+                    </div>
+                    <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
+                    <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
+                    <div class="process-step-item">
+                         <div class="flowchart-step border-2 rounded-full text-xl">2</div>
+                        <h3 class="font-bold text-lg text-[#000000]">Producción</h3>
+                        <p class="text-sm text-gray-700">Ponemos en marcha las ideas.</p>
+                    </div>
+                     <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
+                     <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
+                    <div class="process-step-item">
+                         <div class="flowchart-step border-2 rounded-full text-xl">3</div>
+                        <h3 class="font-bold text-lg text-[#000000]">Optimización</h3>
+                        <p class="text-sm text-gray-700">Ejecutamos y monitoreamos.</p>
+                    </div>
+                     <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
+                     <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
+                     <div class="process-step-item">
+                         <div class="flowchart-step border-2 rounded-full text-xl">4</div>
+                        <h3 class="font-bold text-lg text-[#000000]">Evolución</h3>
+                        <p class="text-sm text-gray-700">Medimos y escalamos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#000000] text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <h2 class="text-2xl font-bold mb-2">¿Listo para impulsar tu marca?</h2>
+            <p class="mb-6">Hablemos sobre cómo podemos ayudarte a alcanzar tus objetivos.</p>
+            <p class="text-lg font-bold"><i class="fas fa-user-circle mr-2"></i> Julián Barajas: 3204491592</p>
+            <p class="text-lg font-bold"><i class="fas fa-user-circle mr-2"></i> Mauricio Robles: 3194126419</p>
+            <p class="text-lg font-bold"><i class="fas fa-envelope mr-2"></i> Correo: agencia.jumblers@gmail.com</p>
+            <div class="mt-8 text-sm text-gray-300">
+                &copy; 2025 Jumblers. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapText = (text) => {
+                const words = text.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+            
+            const serviceLabels = ['Gestión de Redes Sociales', 'Posicionamiento SEO', 'Diseño Web', 'Chatbots (Implementación)'].map(wrapText);
+            const serviceData = {
+                labels: serviceLabels,
+                datasets: [{
+                    label: 'Precio Mínimo (COP)',
+                    data: [500000, 1500000, 2000000, 500000],
+                    backgroundColor: '#6d76f8', /* Morado */
+                    borderColor: '#3441de', /* Morado oscuro */
+                    borderWidth: 2,
+                    borderRadius: 8
+                }, {
+                    label: 'Precio Máximo (COP)',
+                    data: [1200000, 1500000, 4000000, 1000000],
+                    backgroundColor: '#e8b7f4', /* Rosa */
+                    borderColor: '#6d76f8', /* Morado */
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            };
+            new Chart(document.getElementById('serviciosChart'), {
+                type: 'bar',
+                data: serviceData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Rango de Precios por Servicio (Mensual)', font: { size: 16 }, color: '#333' },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return '$' + (value / 1000000) + 'M'; }
+                            },
+                            max: 4000000
+                        }
+                    }
+                }
+            });
+            
+            new Chart(document.getElementById('interaccionesChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Gestión Anterior', 'Con Jumblers'],
+                    datasets: [{
+                        label: 'Interacciones',
+                        data: [25, 75],
+                        backgroundColor: ['#e8b7f4', '#6d76f8'], /* Rosa, Morado */
+                        borderColor: '#3441de', /* Morado oscuro */
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const seguidoresData = {
+                labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4 (Jumblers)', 'Mes 5', 'Mes 6'],
+                datasets: [{
+                    label: 'Crecimiento de Seguidores',
+                    data: [100, 100, 100, 129, 159, 189], /* Adjusted data points for 100 initial and 89 increment */
+                    fill: true,
+                    borderColor: '#6d76f8', /* Morado */
+                    backgroundColor: 'rgba(109, 118, 248, 0.2)', /* Morado con transparencia */
+                    tension: 0.4
+                }]
+            };
+            new Chart(document.getElementById('seguidoresChart'), {
+                type: 'line',
+                data: seguidoresData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                         title: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    },
+                    scales: {
+                        y: { beginAtZero: false }
+                        }
+                }
+            });
+
+            // Gemini API Integration for Content Ideas
+            const contentTopicInput = document.getElementById('contentTopicInput');
+            const generateContentIdeasButton = document.getElementById('generateContentIdeas');
+            const contentIdeasOutput = document.getElementById('contentIdeasOutput');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            generateContentIdeasButton.addEventListener('click', async () => {
+                const prompt = contentTopicInput.value.trim();
+                if (!prompt) {
+                    contentIdeasOutput.innerHTML = '<p class="text-red-500">Por favor, ingresa un tema o industria.</p>';
+                    return;
+                }
+
+                loadingIndicator.classList.remove('hidden');
+                contentIdeasOutput.innerHTML = ''; // Clear previous output
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: `Genera 5 ideas de contenido para redes sociales o blogs sobre el siguiente tema o industria: "${prompt}". Sé creativo y conciso. Incluye un título atractivo y una breve descripción para cada idea.` }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = "AIzaSyB4O7qY3FMdbf_IOFFJod73PRDBTgUl2lc"; 
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error ? errorData.error.message : 'Error al generar ideas.');
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        contentIdeasOutput.innerHTML = `<pre class="whitespace-pre-wrap">${text}</pre>`; // Use pre-wrap for formatting
+                    } else {
+                        contentIdeasOutput.innerHTML = '<p class="text-gray-500">No se pudieron generar ideas. Intenta de nuevo.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error al llamar a la API de Gemini:', error);
+                    contentIdeasOutput.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+                } finally {
+                    loadingIndicator.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

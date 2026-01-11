@@ -3,500 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumblers - Infografía de Marketing Digital</title>
+    <title>Jumblers - Agencia de Marketing Digital 360°</title>
+    <meta name="description" content="Agencia de marketing digital y físico. Transformamos clics en clientes reales con estrategias 360 y neurocopywriting.">
+    
+    <!-- TAILWIND CSS (El motor de diseño) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- FUENTES E ICONOS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- CONFIGURACIÓN DE COLORES -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        jumblers: {
+                            black: '#09090b',
+                            purple: '#a855f7',
+                            light: '#faf5ff',
+                            darkPurple: '#4c1d95',
+                            accent: '#e9d5ff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #8f8ae1 0%, #6d76f8 50%, #e8b7f4 100%);
-            background-attachment: fixed;
-            color: #2D3748;
-        }
-        h1, h2, h3 {
-            color: #000000;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        .chart-container {
-            position: relative;
-            margin: auto;
-            height: 350px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .flowchart-step {
-            border-color: #000000;
-            color: #000000;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-            font-size: 3rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            flex-shrink: 0;
-            line-height: 1; /* Ensure text inside is perfectly centered vertically */
-        }
-        .flowchart-arrow {
-            color: #000000;
-        }
-        .logo-container {
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid black;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 128px;
-            height: 128px;
-            position: relative;
-            z-index: 2;
-        }
-        .logo-container img {
-            border-radius: 50%;
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-        .card-panel {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            margin-bottom: 2rem;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Aligns content to the top */
-        }
-        .text-gray-900 {
-            color: #000000;
-        }
-        .text-gray-700 {
-            color: #333333;
-        }
-        .text-gray-600 {
-            color: #444444;
-        }
-        .marquez-photos-container-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            align-items: center;
-            justify-items: center;
-            height: 200px;
-            overflow: hidden;
-        }
-        .marquez-photos-container-grid img {
-            width: 90%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .process-flow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .process-step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 4px;
-            flex: 1;
-            min-width: 120px;
-            margin: 0.5rem 0;
-        }
-        @media (min-width: 768px) {
-            .process-flow-container {
-                flex-direction: row;
-                align-items: flex-start;
-                justify-content: space-around;
-            }
-            .process-step-item {
-                margin: 0;
-                align-self: flex-start;
-            }
-            .flowchart-arrow {
-                margin-top: 0;
-            }
-        }
-        .card-panel.pagina-web-card h3 {
-            margin-bottom: 0.5rem;
-        }
-        .card-panel.pagina-web-card p {
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-        .card-panel.pagina-web-card a {
-            margin-top: 0.5rem;
-        }
-        .card-panel.pagina-web-card .flex-wrap {
-            margin-top: 0.5rem;
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #e9d5ff, #a855f7);
         }
     </style>
 </head>
-<body>
+<body class="bg-jumblers-light text-gray-900 font-sans antialiased overflow-x-hidden">
 
-    <header class="bg-white shadow-lg sticky top-0 z-10">
-        <div class="container mx-auto px-6 py-4 flex items-center">
-            <div class="flex items-center mr-auto">
-                <img src="https://www.dropbox.com/scl/fi/01y2k7hvsjol5fv8da24a/Logo.png?rlkey=mien45nqzec5i6yo60fkbczst&raw=1" alt="Jumblers Logo Pequeño" class="w-10 h-10 rounded-full mr-4">
-                <h1 class="text-3xl font-black text-[#3441de]" style="font-family: 'Gagalin', sans-serif; line-height: 1;">JUMBLERS</h1>
-            </div>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#quienes-somos" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Quiénes Somos</a>
-                <a href="#servicios" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Servicios</a>
-                <a href="#caso-exito" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Caso de éxito</a>
-                <a href="#proceso" class="text-gray-600 hover:text-[#000000] font-semibold transition duration-300">Proceso</a>
-            </nav>
-        </div>
-    </header>
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex flex-col items-center justify-center leading-none cursor-pointer group">
+                    <div class="h-10 w-10 bg-jumblers-black rounded-md flex items-center justify-center border border-purple-500/30 shadow-lg mb-1">
+                        <span class="text-jumblers-purple font-bold text-xl">J</span>
+                    </div>
+                    <span id="logo-text" class="text-xl font-bold tracking-tighter text-white transition-colors">
+                        JUMBLERS<span class="text-jumblers-purple">.</span>
+                    </span>
+                </div>
 
-    <main class="container mx-auto px-6 py-12">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">Inicio</a>
+                    <a href="#services" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">Servicios</a>
+                    <a href="#ai-lab" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">AI Lab ✨</a>
+                    <a href="#about" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">Nosotros</a>
+                    <a href="#contact" class="bg-jumblers-purple hover:bg-opacity-90 text-white px-5 py-2 rounded-full font-medium transition-all shadow-lg transform hover:-translate-y-0.5">Hablemos</a>
+                </div>
 
-        <section id="quienes-somos" class="text-center mb-16">
-            <div class="mx-auto mb-6 logo-container">
-                 <img src="https://www.dropbox.com/scl/fi/01y2k7hvsjol5fv8da24a/Logo.png?rlkey=mien45nqzec5i6yo60fkbczst&raw=1" alt="Logo de Jumblers: Personaje con gorro y computador" onerror="this.onerror=null;this.src='https://placehold.co/128x128/cccccc/333333?text=Error+Logo';">
-            </div>
-
-            <h2 class="text-4xl font-extrabold text-[#000000] mb-4">En un mar de ideas todo se vale</h2>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
-                Creemos firmemente que detrás de cada marca existe un universo de posibilidades esperando ser descubierto y compartido.
-            </p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
-                Nuestra historia nace de una idea simple pero poderosa: la unión de dos mentes apasionadas por el marketing digital, Julián Barajas y Mauricio Robles, quienes, tras años de formación y experiencia en el campo, decidieron combinar sus conocimientos para un propósito común.
-            </p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
-                Fundamos Jumblers con una misión clara: transformar el potencial de las marcas en resultados tangibles.
-            </p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
-                Nuestro nombre, Jumblers, refleja nuestra filosofía: nos encanta "mezclar" creativamente ideas, estrategias y tecnologías digitales para "desordenar" lo convencional y construir soluciones únicas que impulsen el reconocimiento, disparen las ventas y multipliquen las interacciones de sus marcas en el ecosistema digital.
-            </p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
-                En Jumblers, no solo implementamos estrategias; las creamos desde cero, con un enfoque integral y una energía contagiosa. Nos apasiona ayudar a pequeñas y medianas empresas a navegar el complejo mundo digital, convirtiendo desafíos en oportunidades y visiones en éxitos medibles.
-            </p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-4">
-                ¡Bienvenidos a la era donde la creatividad y la estrategia se unen para hacer magia digital!
-            </p>
-
-            <div class="card-panel mt-16">
-                <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">✨ Generador de Ideas de Contenido ✨</h3>
-                <p class="text-center text-gray-700 mb-6">Demuestra la creatividad de Jumblers. Ingresa un tema o industria para obtener ideas frescas de contenido para redes sociales o blogs.</p>
-                <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6">
-                    <input type="text" id="contentTopicInput" placeholder="Ej: Moda masculina, Cafetería, Tecnología"
-                           class="flex-grow p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:border-[#6d76f8] text-gray-800">
-                    <button id="generateContentIdeas"
-                            class="bg-[#6d76f8] hover:bg-[#3441de] text-white font-bold py-3 px-6 rounded-md transition duration-300 shadow-lg">
-                        Generar Ideas
+                <!-- Mobile Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
                     </button>
                 </div>
-                <div id="contentIdeasOutput" class="bg-gray-100 p-4 rounded-md text-gray-800 text-left min-h-[100px] flex items-center justify-center">
-                    <p class="text-gray-500">Las ideas generadas aparecerán aquí...</p>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full left-0 top-full border-t border-gray-100 animate-in slide-in-from-top-5">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-purple-50">Inicio</a>
+                <a href="#services" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-purple-50">Servicios</a>
+                <a href="#ai-lab" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-purple-50">AI Lab ✨</a>
+                <a href="#about" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-purple-50">Nosotros</a>
+                <a href="#contact" class="block px-4 py-3 rounded-lg text-base font-bold text-jumblers-purple hover:bg-purple-50">Contáctanos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden bg-jumblers-black">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 opacity-95 bg-gradient-to-br from-jumblers-black via-jumblers-black to-jumblers-darkPurple"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full">
+            <div class="inline-block px-4 py-1 mb-6 rounded-full text-xs md:text-sm font-semibold tracking-wide uppercase bg-white/5 border border-jumblers-purple text-jumblers-accent">
+                Expertos en crecimiento de marca
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                Transformamos clics <br class="hidden md:block" />
+                en <span class="gradient-text">clientes reales</span>
+            </h1>
+
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10 px-4">
+                Ofrecemos <strong>soluciones 360°</strong> que integran todo el ecosistema de tu marca. Desde estrategias <strong>digitales</strong> hasta experiencias <strong>físicas</strong>.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-4">
+                <a href="https://w.app/jumblers" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-lg font-bold text-lg text-white bg-[#25D366] hover:opacity-90 hover:-translate-y-1 transition-all shadow-lg flex items-center justify-center">
+                    Hablemos <i data-lucide="message-circle" class="ml-2 w-5 h-5"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-6 py-3 rounded-lg font-bold text-lg text-white bg-blue-600 hover:bg-blue-500 hover:-translate-y-1 transition-all shadow-lg flex items-center justify-center">
+                    Conócenos
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-6 py-3 rounded-lg font-bold text-lg text-black bg-yellow-400 hover:bg-yellow-300 hover:-translate-y-1 transition-all shadow-lg flex items-center justify-center">
+                    Servicios
+                </a>
+                <a href="#ai-lab" class="w-full sm:w-auto px-6 py-3 rounded-lg font-bold text-lg text-white bg-jumblers-purple hover:bg-opacity-90 hover:-translate-y-1 transition-all shadow-lg flex items-center justify-center ring-2 ring-purple-500/50">
+                    <i data-lucide="sparkles" class="mr-2 w-5 h-5"></i> Probar Jumblers AI
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Icon -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block text-jumblers-purple">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-16 md:py-24 bg-jumblers-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-base font-semibold tracking-wide uppercase text-jumblers-purple">Qué hacemos</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-jumblers-black sm:text-4xl">
+                    Portafolio de servicios integral
+                </p>
+                <p class="mt-4 max-w-2xl text-lg text-gray-500 mx-auto">
+                    Desde la primera línea de código hasta la impresión final. Cubrimos todas las necesidades de marketing de tu empresa.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Service Cards (Generated via JS or static HTML) -->
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Posicionamiento SEO</h3>
+                    <p class="text-gray-600 flex-grow">Visibilidad total. Optimizamos tu presencia no solo en Google, sino también en buscadores de redes sociales.</p>
                 </div>
-                <div id="loadingIndicator" class="hidden text-center mt-4 text-[#3441de] font-semibold">
-                    Generando ideas...
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
+                        <i data-lucide="megaphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Ads y Campañas</h3>
+                    <p class="text-gray-600 flex-grow">Gestión experta de pauta. Maximizamos tu presupuesto en Meta Ads, Google Ads y LinkedIn Ads.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
+                        <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Neurocopywriting</h3>
+                    <p class="text-gray-600 flex-grow">Textos que venden. Redacción estratégica y persuasiva para webs, correos y anuncios.</p>
+                </div>
+                 <!-- Card 4 -->
+                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
+                        <i data-lucide="laptop" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Diseño Web</h3>
+                    <p class="text-gray-600 flex-grow">Sitios web de alto impacto integrados con pasarelas de pago seguras para vender 24/7.</p>
+                </div>
+                 <!-- Card 5 -->
+                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
+                        <i data-lucide="palette" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Branding</h3>
+                    <p class="text-gray-600 flex-grow">Construimos marcas memorables. Desde la identidad visual hasta piezas gráficas creativas.</p>
+                </div>
+                 <!-- Card 6 -->
+                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
+                        <i data-lucide="printer" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-jumblers-black">Publicidad Física</h3>
+                    <p class="text-gray-600 flex-grow">Evidencia física. Diseño y producción de material POP, stands y experiencias BTL.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="servicios" class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-[#000000] mb-8">Servicios y Precios</h2>
-            <div class="card-panel">
-                 <p class="text-center text-gray-700 mb-6">Ofrecemos una gama completa de servicios de marketing digital, con precios estimados según la complejidad y el alcance de cada proyecto.</p>
-                <div class="chart-container">
-                    <canvas id="serviciosChart"></canvas>
-                </div>
-                <p class="text-sm text-center text-gray-600 mt-4">Los precios son rangos mensuales y no incluyen la inversión en pauta publicitaria. Los servicios de video y fotografía se cotizan por proyecto.</p>
-            </div>
-        </section>
+    <!-- AI LAB SECTION -->
+    <section id="ai-lab" class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-jumblers-black to-[#2e1065] text-white">
+        <div class="absolute top-0 right-0 p-12 opacity-10 hidden md:block">
+            <i data-lucide="sparkles" class="w-64 h-64"></i>
+        </div>
 
-        <section id="caso-exito" class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-[#000000] mb-2">Caso de éxito: Marquez</h2>
-             <p class="text-center text-lg text-gray-700 mb-8">Elevando la elegancia masculina con una estrategia digital a medida.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <div class="card-panel">
-                    <h3 class="text-2xl font-bold text-[#000000] mb-4">El desafío y nuestra solución web</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Márquez es una boutique de ropa masculina que buscaba construir una presencia digital sólida desde cero.
-                        <br><br>
-                        No contaba con una página web, lo que limitaba su capacidad para mostrar productos, vender en línea y ofrecer métodos de pago digitales.
-                        Desde nuestra agencia, desarrollamos una solución integral: una plataforma web funcional, atractiva y orientada a la conversión.
-                        <br><br>
-                        También mejoramos su presencia en redes sociales, optimizando el contenido y aplicando estrategias orgánicas para aumentar la interacción y el alcance sin una gran inversión en pauta.
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text -->
+                <div>
+                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-4 bg-white/10 text-jumblers-purple">
+                        <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i> Powered by Gemini
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Jumblers AI Lab ✨</h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Experimenta el poder del <strong>Neurocopywriting</strong> al instante. Nuestra herramienta gratuita crea titulares diseñados para activar los disparadores mentales de tus clientes.
                     </p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="mr-2 text-green-400 w-5 h-5"></i> Analiza tu producto al instante.</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="mr-2 text-green-400 w-5 h-5"></i> Aplica sesgos cognitivos reales.</li>
+                    </ul>
                 </div>
-                <div class="card-panel pagina-web-card">
-                    <h3 class="text-2xl font-bold text-center text-[#000000]">Página Web</h3>
-                    <p class="text-gray-700 leading-relaxed mb-2">
-                        Ropa para hombre con la mejor calidad/precio para cada situación y evento. | Marquez Gentleman And Suit
+
+                <!-- Tool Interface -->
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-2xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i data-lucide="pen-tool" class="mr-2 w-5 h-5 text-jumblers-purple"></i> Generador de Titulares
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">¿Qué quieres vender hoy?</label>
+                        <input type="text" id="ai-input" placeholder="Ej: Zapatillas, Consultoría..." class="w-full bg-black/30 border border-gray-600 rounded-lg p-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all">
+                    </div>
+                    
+                    <button onclick="generateMockIdeas()" id="ai-btn" class="w-full py-3 px-4 rounded-lg font-bold flex items-center justify-center transition-all bg-jumblers-purple hover:scale-[1.02]">
+                        <i data-lucide="sparkles" class="mr-2 w-5 h-5"></i> Generar Ideas ✨
+                    </button>
+
+                    <!-- Results Container (Hidden by default) -->
+                    <div id="ai-results" class="space-y-4 mt-6 hidden">
+                        <!-- Result 1 -->
+                        <div class="p-4 rounded-lg border bg-blue-500/20 border-blue-500/30">
+                            <h4 class="text-xs font-bold uppercase text-blue-300 mb-1">🤔 Curiosidad</h4>
+                            <p class="font-medium text-white text-lg" id="res-curiosity">Cargando...</p>
+                        </div>
+                        <!-- Result 2 -->
+                        <div class="p-4 rounded-lg border bg-red-500/20 border-red-500/30">
+                            <h4 class="text-xs font-bold uppercase text-red-300 mb-1">😟 Dolor / Miedo</h4>
+                            <p class="font-medium text-white text-lg" id="res-pain">Cargando...</p>
+                        </div>
+                        <!-- Result 3 -->
+                        <div class="p-4 rounded-lg border bg-green-500/20 border-green-500/30">
+                            <h4 class="text-xs font-bold uppercase text-green-300 mb-1">🤩 Beneficio</h4>
+                            <p class="font-medium text-white text-lg" id="res-benefit">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 md:py-24 bg-jumblers-black text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="inline-block px-3 py-1 mb-4 rounded-full text-xs font-semibold tracking-wide uppercase border border-purple-500 text-purple-300">
+                        Nuestra historia
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">
+                        Nacimos de un sueño, <br />
+                        <span class="text-jumblers-purple">trabajamos para cumplir el tuyo.</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        Lo que comenzó como el sueño de tres profesionales de la <strong>Universidad Sergio Arboleda</strong>, hoy es una realidad imparable. En Jumblers no somos una agencia fría de métricas vacías; somos <strong>humanos conectando con humanos</strong>.
                     </p>
-                    <a href="https://www.marquezgentlemansuit.com/" target="_blank" class="text-[#6d76f8] hover:underline text-sm block">Visitar web</a>
-                    <div class="flex flex-wrap justify-center items-center gap-1 mt-2">
-                        <img src="https://www.dropbox.com/scl/fi/qlfa9pw38ran3iwjznqtx/Marquezweb.png?rlkey=xyx47icg2nzoshejyywtks6en&raw=1" alt="[Image of Marquez Gentleman's Suit Website]" class="w-full h-auto rounded-md shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/300x200/cccccc/333333?text=Error+Web+Image';">
+                    
+                    <div class="space-y-5 mt-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-900/30 flex items-center justify-center text-jumblers-purple">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Cercanía real</h4>
+                                <p class="text-sm text-gray-400">Más que proveedores, somos tu equipo extendido.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-900/30 flex items-center justify-center text-jumblers-purple">
+                                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">ADN Sergio Arboleda</h4>
+                                <p class="text-sm text-gray-400">Profesionalismo, ética y pasión fundacional.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                 <div class="card-panel">
-                     <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Aumento de Interacciones</h3>
-                    <div class="chart-container" style="height: 300px;">
-                        <canvas id="interaccionesChart"></canvas>
-                    </div>
-                     <p class="text-center text-gray-700 mt-4">Rediseñamos la estrategia de contenido, logrando un notable incremento en el engagement.</p>
-                </div>
-                <div class="card-panel">
-                    <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Marquez Fotos</h3>
-                    <div class="marquez-photos-container-grid">
-                        <img src="https://www.dropbox.com/scl/fi/ombpr0plg9swm6kk89fn8/IMG_6013.jpg?rlkey=js15ytqdbfnuutkzpuibs865q&raw=1" alt="[Image of Marquez Client 1]" onerror="this.onerror=null;this.src='https://placehold.co/150x100/cccccc/333333?text=Error+Foto+1';">
-                        <img src="https://www.dropbox.com/scl/fi/4jtlo77cnfn34l4x32uug/IMG_6011.jpg?rlkey=65a1avirals5xp0p6l4xzewfb&raw=1" alt="[Image of Marquez Client 2]" onerror="this.onerror=null;this.src='https://placehold.co/150x100/cccccc/333333?text=Error+Foto+2';">
-                    </div>
-                </div>
-                <div class="card-panel md:col-span-2 lg:col-span-2">
-                     <h3 class="text-2xl font-bold text-center text-[#000000] mb-4">Crecimiento orgánico de seguidores</h3>
-                    <p class="text-gray-700 mb-4">Nuestra gestión estratégica en Instagram y Facebook, combinada con un SEO efectivo en su nueva web, generó un crecimiento sostenido y cualificado de su comunidad. Es importante mencionar que la cuenta de Instagram de Márquez había sido penalizada previamente por el uso de bots, lo cual hizo más lento el proceso inicial de obtención de seguidores. Sin embargo, logramos construir una comunidad sólida de forma orgánica y conseguir que la cuenta sea recomendada por el algoritmo de Instagram.</p>
-                    <a href="https://www.instagram.com/marquez.gentlemansuit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-[#6d76f8] hover:underline text-sm mt-4 block">Visitar Instagram</a>
-                    <div class="chart-container mt-6">
-                        <canvas id="seguidoresChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="proceso" class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-[#000000] mb-8">Nuestro proceso de trabajo</h2>
-            <div class="card-panel">
-                <div class="flex flex-col md:flex-row justify-around items-start text-center">
-                    <div class="process-step-item">
-                        <div class="flowchart-step border-2 rounded-full text-xl">1</div>
-                        <h3 class="font-bold text-lg text-[#000000]">Conocimiento y Estrategia</h3>
-                        <p class="text-sm text-gray-700">Nos sumergimos en tu marca y diseñamos una hoja de ruta a medida.</p>
-                    </div>
-                    <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
-                    <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
-                    <div class="process-step-item">
-                         <div class="flowchart-step border-2 rounded-full text-xl">2</div>
-                        <h3 class="font-bold text-lg text-[#000000]">Producción</h3>
-                        <p class="text-sm text-gray-700">Ponemos en marcha las ideas.</p>
-                    </div>
-                     <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
-                     <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
-                    <div class="process-step-item">
-                         <div class="flowchart-step border-2 rounded-full text-xl">3</div>
-                        <h3 class="font-bold text-lg text-[#000000]">Optimización</h3>
-                        <p class="text-sm text-gray-700">Ejecutamos y monitoreamos.</p>
-                    </div>
-                     <div class="text-4xl flowchart-arrow hidden md:block">&rarr;</div>
-                     <div class="text-4xl flowchart-arrow md:hidden my-4">&darr;</div>
-                     <div class="process-step-item">
-                         <div class="flowchart-step border-2 rounded-full text-xl">4</div>
-                        <h3 class="font-bold text-lg text-[#000000]">Evolución</h3>
-                        <p class="text-sm text-gray-700">Medimos y escalamos.</p>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="bg-gradient-to-br from-[#4c1d95] to-jumblers-black p-1 rounded-2xl transform md:rotate-3 shadow-2xl border border-white/10">
+                        <div class="bg-white/5 backdrop-blur-md rounded-xl p-8">
+                            <div class="text-center mb-8">
+                                <span class="block text-5xl font-extrabold text-white mb-2">100%</span>
+                                <span class="text-sm uppercase tracking-widest text-purple-300">Pasión y compromiso</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div class="bg-black/30 p-4 rounded-lg">
+                                    <span class="block text-2xl font-bold">3</span>
+                                    <span class="text-xs text-gray-400">Fundadores</span>
+                                </div>
+                                <div class="bg-black/30 p-4 rounded-lg">
+                                    <span class="block text-2xl font-bold">360°</span>
+                                    <span class="text-xs text-gray-400">Servicios</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 md:py-24 bg-jumblers-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+                <div class="p-10 bg-jumblers-purple text-white">
+                    <h3 class="text-2xl font-bold mb-4">Contáctanos</h3>
+                    <p class="mb-8 text-purple-100">Estamos listos para escucharte. Inicia una conversación inmediata.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i data-lucide="mail" class="mr-3 w-5 h-5"></i>
+                            <span class="text-sm">agencia.jumblers@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="phone" class="mr-3 w-5 h-5"></i>
+                            <span class="text-sm">+57 320 449 1592</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="map-pin" class="mr-3 w-5 h-5"></i>
+                            <span class="text-sm">Bogotá - Colombia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-10 flex flex-col justify-center items-center text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-jumblers-black">¿Listo para despegar?</h3>
+                    <p class="mb-8 text-gray-600">No pierdas tiempo con formularios. Hablemos directamente.</p>
+                    <a href="https://w.app/jumblers" target="_blank" class="w-full px-8 py-4 rounded-full font-bold text-lg text-white bg-jumblers-black hover:bg-gray-800 transition-all shadow-lg flex items-center justify-center transform hover:-translate-y-1">
+                        Hablemos <i data-lucide="message-circle" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-[#000000] text-white">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <h2 class="text-2xl font-bold mb-2">¿Listo para impulsar tu marca?</h2>
-            <p class="mb-6">Hablemos sobre cómo podemos ayudarte a alcanzar tus objetivos.</p>
-            <p class="text-lg font-bold"><i class="fas fa-user-circle mr-2"></i> Julián Barajas: 3204491592</p>
-            <p class="text-lg font-bold"><i class="fas fa-user-circle mr-2"></i> Mauricio Robles: 3194126419</p>
-            <p class="text-lg font-bold"><i class="fas fa-envelope mr-2"></i> Correo: agencia.jumblers@gmail.com</p>
-            <div class="mt-8 text-sm text-gray-300">
-                &copy; 2025 Jumblers. Todos los derechos reservados.
+    <!-- FOOTER -->
+    <footer class="bg-[#050505] text-gray-400 py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold text-white tracking-tighter">
+                    JUMBLERS<span class="text-jumblers-purple">.</span>
+                </span>
+                <p class="text-sm mt-2">Agencia de marketing 360°</p>
+            </div>
+            <div class="text-sm">
+                &copy; <script>document.write(new Date().getFullYear())</script> Jumblers Marketing.
             </div>
         </div>
     </footer>
 
+    <!-- SCRIPTS (La magia funcional) -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const wrapText = (text) => {
-                const words = text.split(' ');
-                const lines = [];
-                let currentLine = '';
-                words.forEach(word => {
-                    if ((currentLine + word).length > 16) {
-                        lines.push(currentLine.trim());
-                        currentLine = '';
-                    }
-                    currentLine += word + ' ';
-                });
-                lines.push(currentLine.trim());
-                return lines;
-            };
+        // Inicializar Iconos
+        lucide.createIcons();
 
-            const tooltipTitleCallback = (tooltipItems) => {
-                const item = tooltipItems[0];
-                let label = item.chart.data.labels[item.dataIndex];
-                if (Array.isArray(label)) {
-                    return label.join(' ');
-                }
-                return label;
-            };
-            
-            const serviceLabels = ['Gestión de Redes Sociales', 'Posicionamiento SEO', 'Diseño Web', 'Chatbots (Implementación)'].map(wrapText);
-            const serviceData = {
-                labels: serviceLabels,
-                datasets: [{
-                    label: 'Precio Mínimo (COP)',
-                    data: [500000, 1500000, 2000000, 500000],
-                    backgroundColor: '#6d76f8', /* Morado */
-                    borderColor: '#3441de', /* Morado oscuro */
-                    borderWidth: 2,
-                    borderRadius: 8
-                }, {
-                    label: 'Precio Máximo (COP)',
-                    data: [1200000, 1500000, 4000000, 1000000],
-                    backgroundColor: '#e8b7f4', /* Rosa */
-                    borderColor: '#6d76f8', /* Morado */
-                    borderWidth: 2,
-                    borderRadius: 8
-                }]
-            };
-            new Chart(document.getElementById('serviciosChart'), {
-                type: 'bar',
-                data: serviceData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: { display: true, text: 'Rango de Precios por Servicio (Mensual)', font: { size: 16 }, color: '#333' },
-                        tooltip: { callbacks: { title: tooltipTitleCallback } }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) { return '$' + (value / 1000000) + 'M'; }
-                            },
-                            max: 4000000
-                        }
-                    }
-                }
-            });
-            
-            new Chart(document.getElementById('interaccionesChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Gestión Anterior', 'Con Jumblers'],
-                    datasets: [{
-                        label: 'Interacciones',
-                        data: [25, 75],
-                        backgroundColor: ['#e8b7f4', '#6d76f8'], /* Rosa, Morado */
-                        borderColor: '#3441de', /* Morado oscuro */
-                        borderWidth: 2,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: { display: false },
-                        tooltip: { callbacks: { title: tooltipTitleCallback } }
-                    }
-                }
-            });
+        // 1. Lógica del Menú Móvil
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            const seguidoresData = {
-                labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4 (Jumblers)', 'Mes 5', 'Mes 6'],
-                datasets: [{
-                    label: 'Crecimiento de Seguidores',
-                    data: [100, 100, 100, 129, 159, 189], /* Adjusted data points for 100 initial and 89 increment */
-                    fill: true,
-                    borderColor: '#6d76f8', /* Morado */
-                    backgroundColor: 'rgba(109, 118, 248, 0.2)', /* Morado con transparencia */
-                    tension: 0.4
-                }]
-            };
-            new Chart(document.getElementById('seguidoresChart'), {
-                type: 'line',
-                data: seguidoresData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                         title: { display: false },
-                        tooltip: { callbacks: { title: tooltipTitleCallback } }
-                    },
-                    scales: {
-                        y: { beginAtZero: false }
-                        }
-                }
-            });
-
-            // Gemini API Integration for Content Ideas
-            const contentTopicInput = document.getElementById('contentTopicInput');
-            const generateContentIdeasButton = document.getElementById('generateContentIdeas');
-            const contentIdeasOutput = document.getElementById('contentIdeasOutput');
-            const loadingIndicator = document.getElementById('loadingIndicator');
-
-            generateContentIdeasButton.addEventListener('click', async () => {
-                const prompt = contentTopicInput.value.trim();
-                if (!prompt) {
-                    contentIdeasOutput.innerHTML = '<p class="text-red-500">Por favor, ingresa un tema o industria.</p>';
-                    return;
-                }
-
-                loadingIndicator.classList.remove('hidden');
-                contentIdeasOutput.innerHTML = ''; // Clear previous output
-
-                try {
-                    let chatHistory = [];
-                    chatHistory.push({ role: "user", parts: [{ text: `Genera 5 ideas de contenido para redes sociales o blogs sobre el siguiente tema o industria: "${prompt}". Sé creativo y conciso. Incluye un título atractivo y una breve descripción para cada idea.` }] });
-                    const payload = { contents: chatHistory };
-                    const apiKey = "AIzaSyB4O7qY3FMdbf_IOFFJod73PRDBTgUl2lc"; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error ? errorData.error.message : 'Error al generar ideas.');
-                    }
-
-                    const result = await response.json();
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        contentIdeasOutput.innerHTML = `<pre class="whitespace-pre-wrap">${text}</pre>`; // Use pre-wrap for formatting
-                    } else {
-                        contentIdeasOutput.innerHTML = '<p class="text-gray-500">No se pudieron generar ideas. Intenta de nuevo.</p>';
-                    }
-                } catch (error) {
-                    console.error('Error al llamar a la API de Gemini:', error);
-                    contentIdeasOutput.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
-                } finally {
-                    loadingIndicator.classList.add('hidden');
-                }
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
         });
+
+        // 2. Efecto Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuIcon = document.querySelector('#mobile-menu-btn i');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md', 'py-2');
+                navbar.classList.remove('py-4');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-jumblers-black');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-100');
+                    link.classList.add('text-gray-800');
+                });
+                menuIcon.style.color = '#09090b'; // Negro para icono
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'py-2');
+                navbar.classList.add('py-4');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-jumblers-black');
+                navLinks.forEach(link => {
+                    link.classList.add('text-gray-100');
+                    link.classList.remove('text-gray-800');
+                });
+                menuIcon.style.color = '#ffffff'; // Blanco para icono
+            }
+        });
+
+        // 3. Lógica del AI Lab (Simulada para HTML estático)
+        function generateMockIdeas() {
+            const input = document.getElementById('ai-input').value;
+            const btn = document.getElementById('ai-btn');
+            const results = document.getElementById('ai-results');
+
+            if (!input) {
+                alert("Por favor escribe qué producto quieres vender.");
+                return;
+            }
+
+            // Estado de carga
+            btn.innerHTML = `<i data-lucide="loader" class="animate-spin mr-2 w-5 h-5"></i> Analizando...`;
+            lucide.createIcons(); // Recargar iconos nuevos
+            btn.disabled = true;
+            btn.classList.add('opacity-75');
+
+            // Simular tiempo de pensamiento de IA (1.5 segundos)
+            setTimeout(() => {
+                // Restaurar botón
+                btn.innerHTML = `<i data-lucide="sparkles" class="mr-2 w-5 h-5"></i> Generar Ideas ✨`;
+                btn.disabled = false;
+                btn.classList.remove('opacity-75');
+                lucide.createIcons();
+
+                // Mostrar resultados dinámicos basados en el input
+                results.classList.remove('hidden');
+                
+                // Textos generados (Simulados con lógica simple)
+                document.getElementById('res-curiosity').innerText = `¿Sabías que el 90% ignora este secreto sobre ${input}?`;
+                document.getElementById('res-pain').innerText = `Deja de perder dinero hoy mismo por no tener ${input} optimizado.`;
+                document.getElementById('res-benefit').innerText = `Consigue resultados x10 con ${input} sin esfuerzo extra.`;
+            }, 1500);
+        }
     </script>
 </body>
 </html>

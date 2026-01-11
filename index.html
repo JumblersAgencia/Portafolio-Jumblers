@@ -6,14 +6,14 @@
     <title>Jumblers - Agencia de Marketing Digital 360°</title>
     <meta name="description" content="Agencia de marketing digital y físico. Transformamos clics en clientes reales con estrategias 360 y neurocopywriting.">
     
-    <!-- TAILWIND CSS (El motor de diseño) -->
+    <!-- TAILWIND CSS (Motor de diseño visual) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- FUENTES E ICONOS -->
+    <!-- FUENTES E ICONOS (Tipografía Inter e iconos Lucide) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- CONFIGURACIÓN DE COLORES -->
+    <!-- CONFIGURACIÓN DE COLORES DE MARCA -->
     <script>
         tailwind.config = {
             theme: {
@@ -21,11 +21,11 @@
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         jumblers: {
-                            black: '#09090b',
-                            purple: '#a855f7',
-                            light: '#faf5ff',
-                            darkPurple: '#4c1d95',
-                            accent: '#e9d5ff'
+                            black: '#09090b',    // Negro Profundo
+                            purple: '#a855f7',   // Morado Vibrante
+                            light: '#faf5ff',    // Fondo Claro
+                            darkPurple: '#4c1d95', // Morado Oscuro
+                            accent: '#e9d5ff'    // Lila Suave
                         }
                     }
                 }
@@ -34,6 +34,7 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        /* Efecto de texto gradiente para títulos impactantes */
         .gradient-text {
             background-clip: text;
             -webkit-background-clip: text;
@@ -44,21 +45,27 @@
 </head>
 <body class="bg-jumblers-light text-gray-900 font-sans antialiased overflow-x-hidden">
 
-    <!-- NAVBAR -->
+    <!-- BARRA DE NAVEGACIÓN (NAVBAR) -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
+                
+                <!-- LOGO DE LA AGENCIA -->
                 <div class="flex flex-col items-center justify-center leading-none cursor-pointer group">
-                    <div class="h-10 w-10 bg-jumblers-black rounded-md flex items-center justify-center border border-purple-500/30 shadow-lg mb-1">
+                    <!-- 1. Intenta cargar tu imagen 'logo.png' -->
+                    <img src="logo.png" alt="Logo Jumblers" class="h-10 w-auto mb-1 rounded-md shadow-lg border border-purple-500/30 object-contain bg-jumblers-black" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex'">
+                    
+                    <!-- 2. Logo de respaldo (letra J) si la imagen no carga -->
+                    <div id="fallback-logo" class="h-10 w-10 bg-jumblers-black rounded-md items-center justify-center border border-purple-500/30 shadow-lg mb-1 hidden">
                         <span class="text-jumblers-purple font-bold text-xl">J</span>
                     </div>
+
                     <span id="logo-text" class="text-xl font-bold tracking-tighter text-white transition-colors">
                         JUMBLERS<span class="text-jumblers-purple">.</span>
                     </span>
                 </div>
 
-                <!-- Desktop Menu -->
+                <!-- Menú de Escritorio -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">Inicio</a>
                     <a href="#services" class="nav-link text-gray-100 hover:text-jumblers-purple transition-colors font-medium">Servicios</a>
@@ -67,7 +74,7 @@
                     <a href="#contact" class="bg-jumblers-purple hover:bg-opacity-90 text-white px-5 py-2 rounded-full font-medium transition-all shadow-lg transform hover:-translate-y-0.5">Hablemos</a>
                 </div>
 
-                <!-- Mobile Button -->
+                <!-- Botón Menú Móvil -->
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white focus:outline-none">
                         <i data-lucide="menu" class="w-8 h-8"></i>
@@ -76,7 +83,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
+        <!-- Menú Desplegable Móvil -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full left-0 top-full border-t border-gray-100 animate-in slide-in-from-top-5">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#home" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-purple-50">Inicio</a>
@@ -88,9 +95,9 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- SECCIÓN HERO (PRINCIPAL) -->
     <section id="home" class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden bg-jumblers-black">
-        <!-- Background Overlay -->
+        <!-- Fondo con superposición -->
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')] bg-cover bg-center"></div>
         <div class="absolute inset-0 opacity-95 bg-gradient-to-br from-jumblers-black via-jumblers-black to-jumblers-darkPurple"></div>
 
@@ -108,7 +115,7 @@
                 Ofrecemos <strong>soluciones 360°</strong> que integran todo el ecosistema de tu marca. Desde estrategias <strong>digitales</strong> hasta experiencias <strong>físicas</strong>.
             </p>
 
-            <!-- Buttons -->
+            <!-- Grupo de Botones CTA -->
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-4">
                 <a href="https://w.app/jumblers" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-lg font-bold text-lg text-white bg-[#25D366] hover:opacity-90 hover:-translate-y-1 transition-all shadow-lg flex items-center justify-center">
                     Hablemos <i data-lucide="message-circle" class="ml-2 w-5 h-5"></i>
@@ -125,13 +132,13 @@
             </div>
         </div>
 
-        <!-- Scroll Icon -->
+        <!-- Flecha de Scroll -->
         <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block text-jumblers-purple">
             <i data-lucide="chevron-down" class="w-8 h-8"></i>
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- SECCIÓN DE SERVICIOS -->
     <section id="services" class="py-16 md:py-24 bg-jumblers-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16">
@@ -145,8 +152,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Service Cards (Generated via JS or static HTML) -->
-                <!-- Card 1 -->
+                <!-- Tarjeta 1 -->
                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
                         <i data-lucide="search" class="w-6 h-6"></i>
@@ -154,7 +160,7 @@
                     <h3 class="text-xl font-bold mb-3 text-jumblers-black">Posicionamiento SEO</h3>
                     <p class="text-gray-600 flex-grow">Visibilidad total. Optimizamos tu presencia no solo en Google, sino también en buscadores de redes sociales.</p>
                 </div>
-                <!-- Card 2 -->
+                <!-- Tarjeta 2 -->
                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
                         <i data-lucide="megaphone" class="w-6 h-6"></i>
@@ -162,7 +168,7 @@
                     <h3 class="text-xl font-bold mb-3 text-jumblers-black">Ads y Campañas</h3>
                     <p class="text-gray-600 flex-grow">Gestión experta de pauta. Maximizamos tu presupuesto en Meta Ads, Google Ads y LinkedIn Ads.</p>
                 </div>
-                <!-- Card 3 -->
+                <!-- Tarjeta 3 -->
                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
                         <i data-lucide="pen-tool" class="w-6 h-6"></i>
@@ -170,7 +176,7 @@
                     <h3 class="text-xl font-bold mb-3 text-jumblers-black">Neurocopywriting</h3>
                     <p class="text-gray-600 flex-grow">Textos que venden. Redacción estratégica y persuasiva para webs, correos y anuncios.</p>
                 </div>
-                 <!-- Card 4 -->
+                 <!-- Tarjeta 4 -->
                  <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
                         <i data-lucide="laptop" class="w-6 h-6"></i>
@@ -178,7 +184,7 @@
                     <h3 class="text-xl font-bold mb-3 text-jumblers-black">Diseño Web</h3>
                     <p class="text-gray-600 flex-grow">Sitios web de alto impacto integrados con pasarelas de pago seguras para vender 24/7.</p>
                 </div>
-                 <!-- Card 5 -->
+                 <!-- Tarjeta 5 -->
                  <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-purple flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-purple-100 text-jumblers-purple flex items-center justify-center mb-6">
                         <i data-lucide="palette" class="w-6 h-6"></i>
@@ -186,7 +192,7 @@
                     <h3 class="text-xl font-bold mb-3 text-jumblers-black">Branding</h3>
                     <p class="text-gray-600 flex-grow">Construimos marcas memorables. Desde la identidad visual hasta piezas gráficas creativas.</p>
                 </div>
-                 <!-- Card 6 -->
+                 <!-- Tarjeta 6 -->
                  <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition-shadow border-t-4 border-jumblers-black flex flex-col">
                     <div class="w-12 h-12 rounded-lg bg-gray-100 text-jumblers-black flex items-center justify-center mb-6">
                         <i data-lucide="printer" class="w-6 h-6"></i>
@@ -198,15 +204,16 @@
         </div>
     </section>
 
-    <!-- AI LAB SECTION -->
+    <!-- SECCIÓN DE LABORATORIO DE IA -->
     <section id="ai-lab" class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-jumblers-black to-[#2e1065] text-white">
+        <!-- Decoración de fondo -->
         <div class="absolute top-0 right-0 p-12 opacity-10 hidden md:block">
             <i data-lucide="sparkles" class="w-64 h-64"></i>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Text -->
+                <!-- Columna Izquierda: Explicación -->
                 <div>
                     <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-4 bg-white/10 text-jumblers-purple">
                         <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i> Powered by Gemini
@@ -221,7 +228,7 @@
                     </ul>
                 </div>
 
-                <!-- Tool Interface -->
+                <!-- Columna Derecha: Interfaz Interactiva -->
                 <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-2xl">
                     <h3 class="text-xl font-bold mb-4 flex items-center">
                         <i data-lucide="pen-tool" class="mr-2 w-5 h-5 text-jumblers-purple"></i> Generador de Titulares
@@ -236,19 +243,16 @@
                         <i data-lucide="sparkles" class="mr-2 w-5 h-5"></i> Generar Ideas ✨
                     </button>
 
-                    <!-- Results Container (Hidden by default) -->
+                    <!-- Resultados (Ocultos por defecto) -->
                     <div id="ai-results" class="space-y-4 mt-6 hidden">
-                        <!-- Result 1 -->
                         <div class="p-4 rounded-lg border bg-blue-500/20 border-blue-500/30">
                             <h4 class="text-xs font-bold uppercase text-blue-300 mb-1">🤔 Curiosidad</h4>
                             <p class="font-medium text-white text-lg" id="res-curiosity">Cargando...</p>
                         </div>
-                        <!-- Result 2 -->
                         <div class="p-4 rounded-lg border bg-red-500/20 border-red-500/30">
                             <h4 class="text-xs font-bold uppercase text-red-300 mb-1">😟 Dolor / Miedo</h4>
                             <p class="font-medium text-white text-lg" id="res-pain">Cargando...</p>
                         </div>
-                        <!-- Result 3 -->
                         <div class="p-4 rounded-lg border bg-green-500/20 border-green-500/30">
                             <h4 class="text-xs font-bold uppercase text-green-300 mb-1">🤩 Beneficio</h4>
                             <p class="font-medium text-white text-lg" id="res-benefit">Cargando...</p>
@@ -259,7 +263,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- SECCIÓN NOSOTROS -->
     <section id="about" class="py-16 md:py-24 bg-jumblers-black text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -321,7 +325,7 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- SECCIÓN CONTACTO -->
     <section id="contact" class="py-16 md:py-24 bg-jumblers-light">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
@@ -354,14 +358,20 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- PIE DE PÁGINA (FOOTER) -->
     <footer class="bg-[#050505] text-gray-400 py-12 border-t border-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="text-xl font-bold text-white tracking-tighter">
-                    JUMBLERS<span class="text-jumblers-purple">.</span>
-                </span>
-                <p class="text-sm mt-2">Agencia de marketing 360°</p>
+            <div class="mb-4 md:mb-0 flex items-center">
+                <!-- Logo Footer -->
+                <div class="h-8 w-8 bg-jumblers-black rounded-md flex items-center justify-center border border-purple-500/30 mr-2">
+                    <span class="text-jumblers-purple font-bold text-lg">J</span>
+                </div>
+                <div>
+                    <span class="text-xl font-bold text-white tracking-tighter">
+                        JUMBLERS<span class="text-jumblers-purple">.</span>
+                    </span>
+                    <p class="text-sm mt-1">Agencia de marketing 360°</p>
+                </div>
             </div>
             <div class="text-sm">
                 &copy; <script>document.write(new Date().getFullYear())</script> Jumblers Marketing.
@@ -369,9 +379,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS (La magia funcional) -->
+    <!-- SCRIPTS (Lógica funcional para móvil, scroll e IA) -->
     <script>
-        // Inicializar Iconos
+        // Inicializar Iconos de la librería Lucide
         lucide.createIcons();
 
         // 1. Lógica del Menú Móvil
@@ -389,7 +399,7 @@
             });
         });
 
-        // 2. Efecto Navbar Scroll
+        // 2. Efecto Navbar al hacer Scroll
         const navbar = document.getElementById('navbar');
         const logoText = document.getElementById('logo-text');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -397,6 +407,7 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
+                // Estado: Scrolled (Fondo blanco)
                 navbar.classList.add('bg-white', 'shadow-md', 'py-2');
                 navbar.classList.remove('py-4');
                 logoText.classList.remove('text-white');
@@ -405,8 +416,9 @@
                     link.classList.remove('text-gray-100');
                     link.classList.add('text-gray-800');
                 });
-                menuIcon.style.color = '#09090b'; // Negro para icono
+                menuIcon.style.color = '#09090b'; 
             } else {
+                // Estado: Top (Transparente)
                 navbar.classList.remove('bg-white', 'shadow-md', 'py-2');
                 navbar.classList.add('py-4');
                 logoText.classList.add('text-white');
@@ -415,11 +427,11 @@
                     link.classList.add('text-gray-100');
                     link.classList.remove('text-gray-800');
                 });
-                menuIcon.style.color = '#ffffff'; // Blanco para icono
+                menuIcon.style.color = '#ffffff'; 
             }
         });
 
-        // 3. Lógica del AI Lab (Simulada para HTML estático)
+        // 3. Lógica del Laboratorio de IA (Simulada para funcionar sin servidor)
         function generateMockIdeas() {
             const input = document.getElementById('ai-input').value;
             const btn = document.getElementById('ai-btn');
@@ -432,11 +444,11 @@
 
             // Estado de carga
             btn.innerHTML = `<i data-lucide="loader" class="animate-spin mr-2 w-5 h-5"></i> Analizando...`;
-            lucide.createIcons(); // Recargar iconos nuevos
+            lucide.createIcons(); 
             btn.disabled = true;
             btn.classList.add('opacity-75');
 
-            // Simular tiempo de pensamiento de IA (1.5 segundos)
+            // Simular tiempo de pensamiento (1.5s)
             setTimeout(() => {
                 // Restaurar botón
                 btn.innerHTML = `<i data-lucide="sparkles" class="mr-2 w-5 h-5"></i> Generar Ideas ✨`;
@@ -444,10 +456,10 @@
                 btn.classList.remove('opacity-75');
                 lucide.createIcons();
 
-                // Mostrar resultados dinámicos basados en el input
+                // Mostrar resultados
                 results.classList.remove('hidden');
                 
-                // Textos generados (Simulados con lógica simple)
+                // Generar textos basados en el input del usuario
                 document.getElementById('res-curiosity').innerText = `¿Sabías que el 90% ignora este secreto sobre ${input}?`;
                 document.getElementById('res-pain').innerText = `Deja de perder dinero hoy mismo por no tener ${input} optimizado.`;
                 document.getElementById('res-benefit').innerText = `Consigue resultados x10 con ${input} sin esfuerzo extra.`;

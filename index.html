@@ -52,7 +52,7 @@
                 
                 <!-- LOGO DE LA AGENCIA -->
                 <div class="flex flex-col items-center justify-center leading-none cursor-pointer group">
-                    <!-- 1. Intenta cargar tu imagen 'Logo.png' (Mayúscula corregida) -->
+                    <!-- 1. Intenta cargar tu imagen 'Logo.png' -->
                     <img src="Logo.png" alt="Logo Jumblers" class="h-10 w-auto mb-1 rounded-md shadow-lg border border-purple-500/30 object-contain bg-jumblers-black" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex'">
                     
                     <!-- 2. Logo de respaldo (letra J) si la imagen no carga -->
@@ -276,7 +276,7 @@
                         <span class="text-jumblers-purple">trabajamos para cumplir el tuyo.</span>
                     </h2>
                     <p class="text-lg text-gray-300 mb-6 leading-relaxed">
-                        Lo que comenzó como el sueño de tres profesionales de la <strong>Universidad Sergio Arboleda</strong>, hoy es una realidad imparable. En Jumblers no somos una agencia fría de métricas vacías; somos <strong>humanos conectando con humanos</strong>.
+                        Lo que comenzó como el sueño de tres profesionales de la <strong>Universidad Sergio Arboleda</strong>, Julian Barajas, Mauricio Robles y Sebastián Vargas hoy es una realidad imparable. En Jumblers no somos una agencia fría de métricas vacías; somos <strong>humanos conectando con humanos</strong>.
                     </p>
                     
                     <div class="space-y-5 mt-8">
@@ -339,7 +339,7 @@
                         </div>
                         <div class="flex items-center">
                             <i data-lucide="phone" class="mr-3 w-5 h-5"></i>
-                            <span class="text-sm">+57 320 449 1592</span>
+                            <span class="text-sm">+57 320 449 1592 / +57 319 4126419</span>
                         </div>
                         <div class="flex items-center">
                             <i data-lucide="map-pin" class="mr-3 w-5 h-5"></i>
@@ -363,8 +363,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0 flex items-center">
                 <!-- Logo Footer -->
-                <div class="h-8 w-8 bg-jumblers-black rounded-md flex items-center justify-center border border-purple-500/30 mr-2">
-                    <span class="text-jumblers-purple font-bold text-lg">J</span>
+                <div class="flex-shrink-0 mr-2">
+                    <!-- 1. Imagen del Logo Footer (Busca 'Logo.png' igual que arriba) -->
+                    <img src="Logo.png" alt="Logo Jumblers" class="h-8 w-auto rounded-md border border-purple-500/30 object-contain bg-jumblers-black" onerror="this.style.display='none'; document.getElementById('fallback-logo-footer').style.display='flex'">
+                    
+                    <!-- 2. Respaldo Footer (Por si falla la imagen) -->
+                    <div id="fallback-logo-footer" class="h-8 w-8 bg-jumblers-black rounded-md items-center justify-center border border-purple-500/30 hidden">
+                        <span class="text-jumblers-purple font-bold text-lg">J</span>
+                    </div>
                 </div>
                 <div>
                     <span class="text-xl font-bold text-white tracking-tighter">
